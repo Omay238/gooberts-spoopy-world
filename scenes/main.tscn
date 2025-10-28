@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dgaty1uj3up4f"]
+[gd_scene load_steps=3 format=3 uid="uid://dgaty1uj3up4f"]
+
+[ext_resource type="PackedScene" uid="uid://bxdmnhk6uge32" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://ji3gtm306d64" path="res://images/floor.png" id="2_0wfyh"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,3 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Root" type="Node2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="Root"]
+scale = Vector2(32, 32)
+texture = ExtResource("2_0wfyh")
+
+[node name="Player" parent="Root" instance=ExtResource("1_o5qli")]
