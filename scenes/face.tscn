@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnyqfvokpphks"]
+
+[ext_resource type="Script" uid="uid://lqutw6wqqqm8" path="res://scripts/face.gd" id="1_3alo4"]
+[ext_resource type="Texture2D" uid="uid://ck2uhu2ttax5w" path="res://images/face/left_eye_closed.png" id="2_vqlam"]
+[ext_resource type="Texture2D" uid="uid://b4vj02paq01wb" path="res://images/face/left_eye_open.png" id="3_42iw6"]
+[ext_resource type="Texture2D" uid="uid://cn8cbslco62xc" path="res://images/face/mouth_closed.png" id="4_4jgys"]
+[ext_resource type="Texture2D" uid="uid://brjd3y2ytljx7" path="res://images/face/mouth_open.png" id="5_e860w"]
+[ext_resource type="Texture2D" uid="uid://bnucycts26njf" path="res://images/face/right_eye_closed.png" id="6_btsjw"]
+[ext_resource type="Texture2D" uid="uid://ds1enxwd6uqvy" path="res://images/face/right_eye_open.png" id="7_76xfw"]
+
+[node name="Face" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3alo4")
+
+[node name="MouthOpen" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("5_e860w")
+
+[node name="MouthClosed" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("4_4jgys")
+
+[node name="LeftEyeOpen" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("3_42iw6")
+
+[node name="RightEyeOpen" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("7_76xfw")
+
+[node name="LeftEyeClosed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("2_vqlam")
+
+[node name="RightEyeClosed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("6_btsjw")
