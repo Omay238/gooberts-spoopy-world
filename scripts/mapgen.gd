@@ -24,10 +24,10 @@ func _ready():
 		var neighbors = []
 		
 		# i've like, never used bitwise operations
-		if y > 0 && !grid[y - 1][x] & 0b00001: neighbors.append([x, y - 1, 0b00])
-		if y + 1 < height && !grid[y + 1][x] & 0b00001: neighbors.append([x, y + 1, 0b01])
-		if x > 0 && !grid[y][x - 1] & 0b00001: neighbors.append([x - 1, y, 0b10])
-		if x + 1 < width && !grid[y][x + 1] & 0b00001: neighbors.append([x + 1, y, 0b11])
+		if y > 0 && !(grid[y - 1][x] & 0b00001): neighbors.append([x, y - 1, 0b00])
+		if y + 1 < height && !(grid[y + 1][x] & 0b00001): neighbors.append([x, y + 1, 0b01])
+		if x > 0 && !(grid[y][x - 1] & 0b00001): neighbors.append([x - 1, y, 0b10])
+		if x + 1 < width && !(grid[y][x + 1] & 0b00001): neighbors.append([x + 1, y, 0b11])
 		
 		if len(neighbors) > 0:
 			var neighbor = neighbors.pick_random()
@@ -68,11 +68,11 @@ func _ready():
 			
 			if grid[y][x] & 0b10000:
 				tiles.append(Vector2i(x * 3, y * 3 - 1))
-			elif grid[y][x] & 0b01000:
+			if grid[y][x] & 0b01000:
 				tiles.append(Vector2i(x * 3 + 1, y * 3))
-			elif grid[y][x] & 0b00100:
+			if grid[y][x] & 0b00100:
 				tiles.append(Vector2i(x * 3, y * 3 + 1))
-			elif grid[y][x] & 0b00010:
+			if grid[y][x] & 0b00010:
 				tiles.append(Vector2i(x * 3 - 1, y * 3))
 			
 			if grid[y][x] == 0b00001:
