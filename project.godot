@@ -20,6 +20,7 @@ config/icon="uid://bxqoe483la76k"
 [autoload]
 
 SignalMan="*res://scripts/global/signal.gd"
+Vars="*res://scripts/global/vars.gd"
 
 [display]
 

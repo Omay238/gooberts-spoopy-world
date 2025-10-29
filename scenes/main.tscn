@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dkkyx0fsi0l08"]
+[gd_scene load_steps=9 format=4 uid="uid://dkkyx0fsi0l08"]
 
 [ext_resource type="TileSet" uid="uid://dgnyyr30k4c0" path="res://tilemap.tres" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bxdmnhk6uge32" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bnyqfvokpphks" path="res://scenes/face.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://drneo1108oggu" path="res://scripts/dialog_region.gd" id="3_tbgi4"]
+[ext_resource type="Script" uid="uid://dhenic5b6cu5g" path="res://scripts/proceed.gd" id="5_tbgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(374, 271)
@@ -72,6 +73,9 @@ offset_right = -500.0
 offset_bottom = -1500.0
 
 [node name="fin" type="Area2D" parent="Root"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_tbgi4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Root/fin"]
 position = Vector2(383, -2863)

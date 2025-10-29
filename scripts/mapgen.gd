@@ -3,8 +3,10 @@ extends TileMapLayer
 func _ready():
 	var grid = []
 	
-	var width = 8;
-	var height = 8;
+	@warning_ignore("integer_division")
+	var width = 8 + Vars.id / 4;
+	@warning_ignore("integer_division")
+	var height = 8 + Vars.id / 4;
 	
 	
 	# 0b<up><right><down><left><visited>

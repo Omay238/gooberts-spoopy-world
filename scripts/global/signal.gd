@@ -19,3 +19,7 @@ signal close_right_eye
 signal send_dialog(dialog: String)
 @warning_ignore("unused_signal")
 signal close_dialog
+
+# scene stuff
+@warning_ignore("unused_signal") # more like unuwused signal ;3
+signal change_scene
