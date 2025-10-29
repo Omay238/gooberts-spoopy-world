@@ -27,6 +27,11 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[gui]
+
+theme/custom="uid://d3o0sxe06mayh"
+theme/custom_font="uid://crj2uacs7j4rq"
+
 [input]
 
 move_left={
