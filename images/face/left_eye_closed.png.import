@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck2uhu2ttax5w"
-path="res://.godot/imported/left_eye_closed.png-59b67f1d10037828e8eab6e0e11b1d77.ctex"
+uid="uid://b1x3fode4124a"
+path.s3tc="res://.godot/imported/left_eye_closed.png-59b67f1d10037828e8eab6e0e11b1d77.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://images/face/left_eye_closed.png"
-dest_files=["res://.godot/imported/left_eye_closed.png-59b67f1d10037828e8eab6e0e11b1d77.ctex"]
+dest_files=["res://.godot/imported/left_eye_closed.png-59b67f1d10037828e8eab6e0e11b1d77.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

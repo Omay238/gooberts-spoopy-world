@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brjd3y2ytljx7"
-path="res://.godot/imported/mouth_open.png-79292f152a1b86f0477c1d8b83f64134.ctex"
+uid="uid://3xkmoo1c5hmq"
+path.s3tc="res://.godot/imported/mouth_open.png-79292f152a1b86f0477c1d8b83f64134.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://images/face/mouth_open.png"
-dest_files=["res://.godot/imported/mouth_open.png-79292f152a1b86f0477c1d8b83f64134.ctex"]
+dest_files=["res://.godot/imported/mouth_open.png-79292f152a1b86f0477c1d8b83f64134.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
