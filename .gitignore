@@ -1,5 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+/export/
 /addons/godot_super-wakatime/
+
 .DS_Store

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dodt4u0os7us5"
 path.s3tc="res://.godot/imported/right_eye_open.png-6a758a5b93cbb01d297de5eeec33b636.s3tc.ctex"
+path.etc2="res://.godot/imported/right_eye_open.png-6a758a5b93cbb01d297de5eeec33b636.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://images/face/right_eye_open.png"
-dest_files=["res://.godot/imported/right_eye_open.png-6a758a5b93cbb01d297de5eeec33b636.s3tc.ctex"]
+dest_files=["res://.godot/imported/right_eye_open.png-6a758a5b93cbb01d297de5eeec33b636.s3tc.ctex", "res://.godot/imported/right_eye_open.png-6a758a5b93cbb01d297de5eeec33b636.etc2.ctex"]
 
 [params]
 

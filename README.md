@@ -1,6 +1,9 @@
 # gooberts spoopy world
 ###### it's goobtastic!
 
+journey into the spoopy world of your good ol' pal goobert. don't worry, it's only spoopy, not
+spooky, so it'll be fine. right..?
+
 a very awesome game featuring hit spur of the moment creature: goobert! everyone
 loves the guy, the way he's a goober and all that stuff. he's straight up
 goobing it! anyways, this is a very spoopy (not spooky11!!!) game.
