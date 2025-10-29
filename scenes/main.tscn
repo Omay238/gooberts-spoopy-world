@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://dkkyx0fsi0l08"]
+[gd_scene load_steps=8 format=4 uid="uid://dkkyx0fsi0l08"]
 
 [ext_resource type="PackedScene" uid="uid://bxdmnhk6uge32" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bnyqfvokpphks" path="res://scenes/face.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://drneo1108oggu" path="res://scripts/dialog_region.gd" id="3_tbgi4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0wfyh"]
 load_path = "res://.godot/imported/tilemap.png-93100180b8a5a1c834e84a2b8d822830.ctex"
@@ -832,6 +833,9 @@ terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_sugp2")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(374, 271)
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -849,6 +853,28 @@ tile_set = SubResource("TileSet_jyhfs")
 
 [node name="Player" parent="Root" instance=ExtResource("1_o5qli")]
 position = Vector2(-64, 64)
+collision_layer = 3
+
+[node name="Area2D" type="Area2D" parent="Root"]
+position = Vector2(-510, -1218)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_tbgi4")
+dialog = "Heya, I'm Goobert! Welcome to my spoopy world."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Root/Area2D"]
+position = Vector2(25, -8)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="Area2D2" type="Area2D" parent="Root"]
+position = Vector2(-510, -1478)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_tbgi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Root/Area2D2"]
+position = Vector2(25, -54)
+shape = SubResource("RectangleShape2D_0wfyh")
 
 [node name="Face" parent="Root" instance=ExtResource("3_sugp2")]
 offset_left = -500.0

@@ -1,8 +1,8 @@
 extends Node
 
-var left_eye = false;
-var mouth = true;
-var right_eye = false;
+var left_eye = true;
+var mouth = false;
+var right_eye = true;
 
 func timer_1():
 	(SignalMan.close_left_eye if left_eye else SignalMan.open_left_eye).emit()

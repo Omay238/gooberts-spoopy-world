@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxdmnhk6uge32"]
+[gd_scene load_steps=6 format=3 uid="uid://bxdmnhk6uge32"]
 
 [ext_resource type="Texture2D" uid="uid://cg53lu76ky5tl" path="res://images/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bmuxr5b5rcgxh" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://bk5rl27hbbfei" path="res://scenes/dialog.tscn" id="3_qhqgy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2els"]
 friction = 0.0
@@ -26,5 +27,14 @@ texture = ExtResource("1_3vyb7")
 shape = SubResource("CircleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
+
+[node name="Dialog" parent="Camera2D" instance=ExtResource("3_qhqgy")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
