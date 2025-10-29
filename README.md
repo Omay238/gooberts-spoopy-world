@@ -13,8 +13,8 @@ this project was made in a week for the hack club siege week 5, with the theme
 "spooky" (eeks!). as of writing i've gotten like 10 hours sunken into the game.
 
 ## tech stack lololol
-godot - game engine at the core of the game (woahhh)
-inkscape - vector graphics editor, used for most things
+godot - game engine at the core of the game (woahhh)  
+inkscape - vector graphics editor, used for most things  
 aseprite - pixel graphics editor, used for _spooky_ things
 
 ## shoutout to liminal on discord
