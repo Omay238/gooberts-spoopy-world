@@ -871,6 +871,7 @@ position = Vector2(-510, -1478)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_tbgi4")
+dialog = "Hey pal what are you doing back here?"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Root/Area2D2"]
 position = Vector2(25, -54)
