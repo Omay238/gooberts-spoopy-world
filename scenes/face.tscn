@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://bnyqfvokpphks"]
 
 [ext_resource type="Script" uid="uid://lqutw6wqqqm8" path="res://scripts/face.gd" id="1_3alo4"]
-[ext_resource type="Texture2D" uid="uid://ck2uhu2ttax5w" path="res://images/face/left_eye_closed.png" id="2_vqlam"]
-[ext_resource type="Texture2D" uid="uid://b4vj02paq01wb" path="res://images/face/left_eye_open.png" id="3_42iw6"]
-[ext_resource type="Texture2D" uid="uid://cn8cbslco62xc" path="res://images/face/mouth_closed.png" id="4_4jgys"]
-[ext_resource type="Texture2D" uid="uid://brjd3y2ytljx7" path="res://images/face/mouth_open.png" id="5_e860w"]
-[ext_resource type="Texture2D" uid="uid://bnucycts26njf" path="res://images/face/right_eye_closed.png" id="6_btsjw"]
-[ext_resource type="Texture2D" uid="uid://ds1enxwd6uqvy" path="res://images/face/right_eye_open.png" id="7_76xfw"]
+[ext_resource type="Texture2D" uid="uid://b1x3fode4124a" path="res://images/face/left_eye_closed.png" id="2_vqlam"]
+[ext_resource type="Texture2D" uid="uid://wxyubiyj21jx" path="res://images/face/left_eye_open.png" id="3_42iw6"]
+[ext_resource type="Texture2D" uid="uid://dem7bm03s8uok" path="res://images/face/mouth_closed.png" id="4_4jgys"]
+[ext_resource type="Texture2D" uid="uid://3xkmoo1c5hmq" path="res://images/face/mouth_open.png" id="5_e860w"]
+[ext_resource type="Texture2D" uid="uid://5twiyhvu66il" path="res://images/face/right_eye_closed.png" id="6_btsjw"]
+[ext_resource type="Texture2D" uid="uid://dodt4u0os7us5" path="res://images/face/right_eye_open.png" id="7_76xfw"]
 
 [node name="Face" type="Control"]
 layout_mode = 3
