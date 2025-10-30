@@ -65,3 +65,5 @@ offset_bottom = 82.0
 texture = ExtResource("7_crxdy")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
