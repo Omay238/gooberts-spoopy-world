@@ -1,11 +1,11 @@
 extends Node
 
-@onready var mouth_open = $MouthOpen;
-@onready var mouth_closed = $MouthClosed;
-@onready var left_eye_open = $LeftEyeOpen;
-@onready var right_eye_open = $RightEyeOpen;
-@onready var left_eye_closed = $LeftEyeClosed;
-@onready var right_eye_closed = $RightEyeClosed;
+@onready var mouth_open: TextureRect = $MouthOpen;
+@onready var mouth_closed: TextureRect = $MouthClosed;
+@onready var left_eye_open: TextureRect = $LeftEyeOpen;
+@onready var right_eye_open: TextureRect = $RightEyeOpen;
+@onready var left_eye_closed: TextureRect = $LeftEyeClosed;
+@onready var right_eye_closed: TextureRect = $RightEyeClosed;
 
 
 func _ready():

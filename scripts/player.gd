@@ -9,6 +9,8 @@ func change_scene():
 	get_tree().change_scene_to_file("res://scenes/dyn.tscn")
 
 func _ready() -> void:
+	SignalMan.change_scene.connect(change_scene)
+	
 	var stretch_tween = get_tree().create_tween()
 	
 	stretch_tween.set_trans(Tween.TRANS_QUAD)

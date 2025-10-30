@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://mviyvw52flk3"]
+
+[ext_resource type="Script" uid="uid://lqutw6wqqqm8" path="res://scripts/face.gd" id="1_p5y8d"]
+[ext_resource type="Texture2D" uid="uid://dp8tss6b1uone" path="res://images/face/evil/mouth_open1.png" id="2_p5y8d"]
+[ext_resource type="Texture2D" uid="uid://doow0fcngcf77" path="res://images/face/evil/mouth_closed1.png" id="3_p5y8d"]
+[ext_resource type="Texture2D" uid="uid://c5vvky3icptwb" path="res://images/face/evil/left_eye_open1.png" id="4_atpeu"]
+[ext_resource type="Texture2D" uid="uid://d1t6yon176coa" path="res://images/face/evil/right_eye_open1.png" id="5_wdutl"]
+[ext_resource type="Texture2D" uid="uid://0cmpxwncurqp" path="res://images/face/evil/left_eye_closed1.png" id="6_sk2fd"]
+[ext_resource type="Texture2D" uid="uid://dh6m3dr5kke8d" path="res://images/face/evil/right_eye_closed1.png" id="7_crxdy"]
+
+[node name="Face" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p5y8d")
+
+[node name="MouthOpen" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("2_p5y8d")
+
+[node name="MouthClosed" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("3_p5y8d")
+
+[node name="LeftEyeOpen" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("4_atpeu")
+
+[node name="RightEyeOpen" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("5_wdutl")
+
+[node name="LeftEyeClosed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("6_sk2fd")
+
+[node name="RightEyeClosed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -112.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = 82.0
+texture = ExtResource("7_crxdy")
+
+[node name="Timer" type="Timer" parent="."]
