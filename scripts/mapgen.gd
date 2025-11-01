@@ -119,7 +119,9 @@ func _ready():
 			elif grid[y][x] == 0b11101:
 				map_str += "╴"
 			elif grid[y][x] == 0b11111:
+				# this should never happen, and so far, it hasn't
 				map_str += "╳"
+		
 		map_str += "\n"
 	
 	set_cells_terrain_connect(tiles, 0, 0)
