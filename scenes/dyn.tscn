@@ -14,10 +14,10 @@ grow_vertical = 2
 
 [node name="Root" type="Node2D" parent="."]
 
-[node name="Player" parent="Root" instance=ExtResource("1_aqayj")]
-position = Vector2(64, 64)
-
 [node name="Layer0" type="TileMapLayer" parent="Root"]
 use_parent_material = true
 tile_set = ExtResource("2_aqayj")
 script = ExtResource("3_1qa0i")
+
+[node name="Player" parent="Root" instance=ExtResource("1_aqayj")]
+position = Vector2(64, 64)

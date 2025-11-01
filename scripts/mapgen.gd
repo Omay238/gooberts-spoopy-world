@@ -59,6 +59,7 @@ func _ready():
 	var map_str = ""
 	
 	var tiles = []
+	var floor_tiles = []
 	
 	for y in range(height):
 		for x in range(width):
@@ -68,14 +69,24 @@ func _ready():
 			tiles.append(Vector2i(x * 3 - 1, y * 3 + 1))
 			tiles.append(Vector2i(x * 3 - 1, y * 3 - 1))
 			
+			floor_tiles.append(Vector2i(x * 3, y * 3))
+			
 			if grid[y][x] & 0b10000:
 				tiles.append(Vector2i(x * 3, y * 3 - 1))
+			else:
+				floor_tiles.append(Vector2i(x * 3, y * 3 - 1))
 			if grid[y][x] & 0b01000:
 				tiles.append(Vector2i(x * 3 + 1, y * 3))
+			else:
+				floor_tiles.append(Vector2i(x * 3 + 1, y * 3))
 			if grid[y][x] & 0b00100:
 				tiles.append(Vector2i(x * 3, y * 3 + 1))
+			else:
+				floor_tiles.append(Vector2i(x * 3, y * 3 + 1))
 			if grid[y][x] & 0b00010:
 				tiles.append(Vector2i(x * 3 - 1, y * 3))
+			else:
+				floor_tiles.append(Vector2i(x * 3 - 1, y * 3))
 			
 			if grid[y][x] == 0b00001:
 				map_str += "┼"
@@ -112,6 +123,8 @@ func _ready():
 		map_str += "\n"
 	
 	set_cells_terrain_connect(tiles, 0, 0)
+	
+	set_cells_terrain_connect(floor_tiles, 0, 1)
 	
 	print(map_str)
 	
