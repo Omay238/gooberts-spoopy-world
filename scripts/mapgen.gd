@@ -105,7 +105,7 @@ func _ready():
 		cx = nx
 		cy = ny
 	
-	var b = bfs_furthest(grid, 0, 0)
+	var b = bfs_furthest(grid, width - 1, height - 1)
 	var c = bfs_furthest(grid, b.x, b.y)
 	
 	var tiles = []
@@ -118,8 +118,8 @@ func _ready():
 	var margin_x := 7
 	var margin_y := 5
 	
-	var total_width := (room_width + hall_length) * width + margin_x * 2
-	var total_height := (room_height + hall_length) * height + margin_y * 2
+	var total_width := (room_width + hall_length) * width + margin_x + 1
+	var total_height := (room_height + hall_length) * height + margin_y + 1
 	
 	# generate a blank canvas of wall
 	for y in range(total_height):
@@ -168,6 +168,13 @@ func _ready():
 					for hx in range(-hall_length, 0):
 						floor_tiles.append(Vector2i(scaled_x + hx, y_half_less + hy))
 			
+			if x == b.x and y == b.y:
+				map_str += "A"
+				continue
+			if x == c.x and y == c.y:
+				map_str += "B"
+				continue
+			
 			if grid[y][x] == 0b00001:
 				map_str += "┼"
 			elif grid[y][x] == 0b00011:
@@ -206,6 +213,6 @@ func _ready():
 	
 	print(b)
 	
-	@warning_ignore("integer_division")
-	$"../Player".position = ((b * Vector2i(room_width, room_height)) + Vector2i(room_width / 2, room_height / 2)) * 128
+	@warning_ignore("integer_division", "narrowing_conversion")
+	$"../Player".position = ((b * Vector2i(room_width + hall_length, room_height + hall_length) + Vector2i(room_width * 0.5, room_height * 0.5))) * 128
 	print(map_str)
