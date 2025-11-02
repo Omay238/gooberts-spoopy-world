@@ -6,7 +6,9 @@ func change_scene():
 	stretch_tween.set_trans(Tween.TRANS_QUAD)
 	await stretch_tween.tween_property($Camera2D/ColorRect, "size", Vector2(1538, 864), 1.0).finished
 	
+	
 	var el = Vars.floors.find_custom(func(x):return x.floor_num==Vars.id)
+	
 	if el != -1:
 		get_tree().change_scene_to_packed(Vars.floors[el].scene)
 	else:

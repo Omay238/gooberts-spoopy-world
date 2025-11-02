@@ -63,14 +63,16 @@ func _ready():
 	var room_height = 10
 	var hall_length = 5
 	var hall_width = 2
+	var margin_x = 7
+	var margin_y = 5
 	
-	var total_width = (room_width + hall_length) * width
-	var total_height = (room_height + hall_length) * height
+	var total_width = (room_width + hall_length) * width + margin_x * 2
+	var total_height = (room_height + hall_length) * height + margin_y * 2
 	
 	# generate a blank canvas of wall
-	for y in range(height):
-		for x in range(width):
-			tiles.append(Vector2i(x, y))
+	for y in range(total_height):
+		for x in range(total_width):
+			tiles.append(Vector2i(x - margin_x, y - margin_y))
 	
 	set_cells_terrain_connect(tiles, Vars.spooky_level, 0)
 	
