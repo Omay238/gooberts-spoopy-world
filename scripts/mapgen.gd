@@ -56,77 +56,45 @@ func _ready():
 		else:
 			stack.pop_back()
 	
-	var map_str = ""
-	
 	var tiles = []
 	var floor_tiles = []
+	
+	var room_width = 10
+	var room_height = 10
+	var hall_length = 5
+	var hall_width = 2
+	
+	var total_width = (room_width + hall_length) * width
+	var total_height = (room_height + hall_length) * height
+	
+	# generate a blank canvas of wall
+	for y in range(height):
+		for x in range(width):
+			tiles.append(Vector2i(x, y))
+	
+	set_cells_terrain_connect(tiles, Vars.spooky_level, 0)
 	
 	for y in range(height):
 		for x in range(width):
 			# 0b<up><right><down><left><visited>
-			tiles.append(Vector2i(x * 3 + 1, y * 3 + 1))
-			tiles.append(Vector2i(x * 3 + 1, y * 3 - 1))
-			tiles.append(Vector2i(x * 3 - 1, y * 3 + 1))
-			tiles.append(Vector2i(x * 3 - 1, y * 3 - 1))
 			
-			floor_tiles.append(Vector2i(x * 3, y * 3))
+			# room
+			for ry in range(room_height):
+				for rx in range(room_width):
+					floor_tiles.append(Vector2i(x * (room_width + hall_length) + rx, y * (room_width + hall_length) + ry))
 			
-			if grid[y][x] & 0b10000:
-				tiles.append(Vector2i(x * 3, y * 3 - 1))
-			else:
+			# halls
+			if !grid[y][x] & 0b10000:
 				floor_tiles.append(Vector2i(x * 3, y * 3 - 1))
-			if grid[y][x] & 0b01000:
-				tiles.append(Vector2i(x * 3 + 1, y * 3))
-			else:
-				floor_tiles.append(Vector2i(x * 3 + 1, y * 3))
-			if grid[y][x] & 0b00100:
-				tiles.append(Vector2i(x * 3, y * 3 + 1))
-			else:
-				floor_tiles.append(Vector2i(x * 3, y * 3 + 1))
-			if grid[y][x] & 0b00010:
-				tiles.append(Vector2i(x * 3 - 1, y * 3))
-			else:
-				floor_tiles.append(Vector2i(x * 3 - 1, y * 3))
 			
-			if grid[y][x] == 0b00001:
-				map_str += "┼"
-			elif grid[y][x] == 0b00011:
-				map_str += "├"
-			elif grid[y][x] == 0b00101:
-				map_str += "┴"
-			elif grid[y][x] == 0b00111:
-				map_str += "└"
-			elif grid[y][x] == 0b01001:
-				map_str += "┤"
-			elif grid[y][x] == 0b01011:
-				map_str += "│"
-			elif grid[y][x] == 0b01101:
-				map_str += "┘"
-			elif grid[y][x] == 0b01111:
-				map_str += "╵"
-			elif grid[y][x] == 0b10001:
-				map_str += "┬"
-			elif grid[y][x] == 0b10011:
-				map_str += "┌"
-			elif grid[y][x] == 0b10101:
-				map_str += "─"
-			elif grid[y][x] == 0b10111:
-				map_str += "╶"
-			elif grid[y][x] == 0b11001:
-				map_str += "┐"
-			elif grid[y][x] == 0b11011:
-				map_str += "╷"
-			elif grid[y][x] == 0b11101:
-				map_str += "╴"
-			elif grid[y][x] == 0b11111:
-				# this should never happen, and so far, it hasn't
-				map_str += "╳"
-		
-		map_str += "\n"
-	
-	set_cells_terrain_connect(tiles, 0, 0)
+			if !grid[y][x] & 0b01000:
+				floor_tiles.append(Vector2i(x * 3 + 1, y * 3))
+			
+			if !grid[y][x] & 0b00100:
+				tiles.append(Vector2i(x * 3, y * 3 + 1))
+			
+			if !grid[y][x] & 0b00010:
+				tiles.append(Vector2i(x * 3 - 1, y * 3))
 	
 	set_cells_terrain_connect(floor_tiles, 0, 1)
-	
-	print(map_str)
 	

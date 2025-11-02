@@ -6,7 +6,11 @@ func change_scene():
 	stretch_tween.set_trans(Tween.TRANS_QUAD)
 	await stretch_tween.tween_property($Camera2D/ColorRect, "size", Vector2(1538, 864), 1.0).finished
 	
-	get_tree().change_scene_to_file("res://scenes/dyn.tscn")
+	var el = Vars.floors.find_custom(func(x):return x.floor_num==Vars.id)
+	if el != -1:
+		get_tree().change_scene_to_packed(Vars.floors[el].scene)
+	else:
+		get_tree().change_scene_to_file("res://scenes/dyn.tscn")
 
 func _ready() -> void:
 	SignalMan.change_scene.connect(change_scene)
