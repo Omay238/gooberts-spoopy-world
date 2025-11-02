@@ -4,9 +4,9 @@ func _ready():
 	var grid = []
 	
 	@warning_ignore("integer_division")
-	var width := 8 + Vars.id / 4;
+	var width := 2 + Vars.id / 4;
 	@warning_ignore("integer_division")
-	var height := 8 + Vars.id / 4;
+	var height := 2 + Vars.id / 4;
 	
 	
 	# 0b<up><right><down><left><visited>
@@ -76,6 +76,8 @@ func _ready():
 	
 	set_cells_terrain_connect(tiles, Vars.spooky_level, 0)
 	
+	var map_str = ""
+	
 	for y in range(height):
 		for x in range(width):
 			# 0b<up><right><down><left><visited>
@@ -113,6 +115,41 @@ func _ready():
 				for hy in range(hall_width):
 					for hx in range(-hall_length, 0):
 						floor_tiles.append(Vector2i(scaled_x + hx, y_half_less + hy))
+			
+			if grid[y][x] == 0b00001:
+				map_str += "┼"
+			elif grid[y][x] == 0b00011:
+				map_str += "├"
+			elif grid[y][x] == 0b00101:
+				map_str += "┴"
+			elif grid[y][x] == 0b00111:
+				map_str += "└"
+			elif grid[y][x] == 0b01001:
+				map_str += "┤"
+			elif grid[y][x] == 0b01011:
+				map_str += "│"
+			elif grid[y][x] == 0b01101:
+				map_str += "┘"
+			elif grid[y][x] == 0b01111:
+				map_str += "╵"
+			elif grid[y][x] == 0b10001:
+				map_str += "┬"
+			elif grid[y][x] == 0b10011:
+				map_str += "┌"
+			elif grid[y][x] == 0b10101:
+				map_str += "─"
+			elif grid[y][x] == 0b10111:
+				map_str += "╶"
+			elif grid[y][x] == 0b11001:
+				map_str += "┐"
+			elif grid[y][x] == 0b11011:
+				map_str += "╷"
+			elif grid[y][x] == 0b11101:
+				map_str += "╴"
+			elif grid[y][x] == 0b11111:
+				map_str += "╳"
+		map_str += "\n"
 	
 	set_cells_terrain_connect(floor_tiles, 0, 1)
 	
+	print(map_str)
