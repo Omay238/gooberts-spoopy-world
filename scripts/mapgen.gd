@@ -4,10 +4,9 @@ func _ready():
 	var grid = []
 	
 	@warning_ignore("integer_division")
-	var width := 2 + Vars.id / 4;
+	var width := 8 + Vars.id / 4;
 	@warning_ignore("integer_division")
-	var height := 2 + Vars.id / 4;
-	
+	var height := 8 + Vars.id / 4;
 	
 	# 0b<up><right><down><left><visited>
 	for y in range(height):
@@ -15,46 +14,49 @@ func _ready():
 		for x in range(width):
 			grid[y].append(0b11110);
 	
-	grid[0][0] = 0b11111
+	var cx = randi() % width
+	var cy = randi() % height
 	
-	var stack = [[0, 0]]
+	grid[cy][cx] = 0b11111
 	
+	var visited = 1
 	
-	while len(stack) > 0:
-		var x = stack[-1][0]
-		var y = stack[-1][1]
+	var total = width * height
+	
+	while visited < total:
 		var neighbors = []
 		
 		# i've like, never used bitwise operations
-		if y > 0 && !(grid[y - 1][x] & 0b00001): neighbors.append([x, y - 1, 0b00])
-		if y + 1 < height && !(grid[y + 1][x] & 0b00001): neighbors.append([x, y + 1, 0b01])
-		if x > 0 && !(grid[y][x - 1] & 0b00001): neighbors.append([x - 1, y, 0b10])
-		if x + 1 < width && !(grid[y][x + 1] & 0b00001): neighbors.append([x + 1, y, 0b11])
+		if cy > 0: neighbors.append([cx, cy - 1, 0b00])
+		if cy + 1 < height: neighbors.append([cx, cy + 1, 0b01])
+		if cx > 0: neighbors.append([cx - 1, cy, 0b10])
+		if cx + 1 < width: neighbors.append([cx + 1, cy, 0b11])
 		
-		if len(neighbors) > 0:
-			var neighbor = neighbors.pick_random()
-			
-			var nx = neighbor[0]
-			var ny = neighbor[1]
-			
+		var neighbor = neighbors.pick_random()
+		
+		var nx = neighbor[0]
+		var ny = neighbor[1]
+		
+		if !(grid[ny][nx] & 0b00001):
 			# they call me john bitwise
 			if neighbor[2] == 0b00:
-				grid[y][x] &= 0b01111
+				grid[cy][cx] &= 0b01111
 				grid[ny][nx] &= 0b11011
 			elif neighbor[2] == 0b01:
-				grid[y][x] &= 0b11011
+				grid[cy][cx] &= 0b11011
 				grid[ny][nx] &= 0b01111
 			elif neighbor[2] == 0b10:
-				grid[y][x] &= 0b11101
+				grid[cy][cx] &= 0b11101
 				grid[ny][nx] &= 0b10111
 			elif neighbor[2] == 0b11:
-				grid[y][x] &= 0b10111
+				grid[cy][cx] &= 0b10111
 				grid[ny][nx] &= 0b11101
 			
 			grid[ny][nx] |= 0b00001
-			stack.append([nx, ny])
-		else:
-			stack.pop_back()
+			visited += 1
+		
+		cx = nx
+		cy = ny
 	
 	var tiles = []
 	var floor_tiles = []
