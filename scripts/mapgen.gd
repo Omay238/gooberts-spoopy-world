@@ -4,9 +4,9 @@ func _ready():
 	var grid = []
 	
 	@warning_ignore("integer_division")
-	var width = 8 + Vars.id / 4;
+	var width := 8 + Vars.id / 4;
 	@warning_ignore("integer_division")
-	var height = 8 + Vars.id / 4;
+	var height := 8 + Vars.id / 4;
 	
 	
 	# 0b<up><right><down><left><visited>
@@ -59,15 +59,15 @@ func _ready():
 	var tiles = []
 	var floor_tiles = []
 	
-	var room_width = 10
-	var room_height = 10
-	var hall_length = 5
-	var hall_width = 2
-	var margin_x = 7
-	var margin_y = 5
+	var room_width := 10
+	var room_height := 8
+	var hall_length := 5
+	var hall_width := 2
+	var margin_x := 7
+	var margin_y := 5
 	
-	var total_width = (room_width + hall_length) * width + margin_x * 2
-	var total_height = (room_height + hall_length) * height + margin_y * 2
+	var total_width := (room_width + hall_length) * width + margin_x * 2
+	var total_height := (room_height + hall_length) * height + margin_y * 2
 	
 	# generate a blank canvas of wall
 	for y in range(total_height):
@@ -80,23 +80,39 @@ func _ready():
 		for x in range(width):
 			# 0b<up><right><down><left><visited>
 			
+			var scaled_x := x * (room_width + hall_length)
+			var scaled_y := y * (room_height + hall_length)
+			
 			# room
 			for ry in range(room_height):
 				for rx in range(room_width):
-					floor_tiles.append(Vector2i(x * (room_width + hall_length) + rx, y * (room_width + hall_length) + ry))
+					floor_tiles.append(Vector2i(scaled_x + rx, scaled_y + ry))
 			
 			# halls
+			@warning_ignore("integer_division")
+			var x_half_less = scaled_x + ((room_width - hall_width) / 2)
+			@warning_ignore("integer_division")
+			var y_half_less = scaled_y + ((room_height - hall_width) / 2)
+			
 			if !grid[y][x] & 0b10000:
-				floor_tiles.append(Vector2i(x * 3, y * 3 - 1))
+				for hy in range(-hall_length, 0):
+					for hx in range(hall_width):
+						floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + hy))
 			
 			if !grid[y][x] & 0b01000:
-				floor_tiles.append(Vector2i(x * 3 + 1, y * 3))
+				for hy in range(hall_width):
+					for hx in range(hall_length):
+						floor_tiles.append(Vector2i(scaled_x + room_width + hx, y_half_less + hy))
 			
 			if !grid[y][x] & 0b00100:
-				tiles.append(Vector2i(x * 3, y * 3 + 1))
+				for hy in range(hall_length):
+					for hx in range(hall_width):
+						floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + room_height + hy))
 			
 			if !grid[y][x] & 0b00010:
-				tiles.append(Vector2i(x * 3 - 1, y * 3))
+				for hy in range(hall_width):
+					for hx in range(-hall_length, 0):
+						floor_tiles.append(Vector2i(scaled_x + hx, y_half_less + hy))
 	
 	set_cells_terrain_connect(floor_tiles, 0, 1)
 	
