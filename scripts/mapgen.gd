@@ -1,12 +1,59 @@
 extends TileMapLayer
 
+func bfs_furthest(grid, sx, sy) -> Vector2i:
+	var height = grid.size()
+	var width = grid[0].size()
+	
+	var visited = []
+	for y in range(height):
+		visited.append([])
+		for x in range(width):
+			visited[y].append(false)
+	
+	var queue = [[sx, sy, 0]]
+	visited[sy][sx] = true
+	
+	var furthest_point = Vector2i(sx, sy)
+	var furthest_distance = 0
+	
+	while not queue.is_empty():
+		var queue_elem = queue.pop_front()
+		var x = queue_elem[0]
+		var y = queue_elem[1]
+		var dst = queue_elem[2]
+		
+		if dst > furthest_distance:
+			furthest_distance = dst
+			furthest_point = Vector2i(x, y)
+		
+		var current_cell = grid[y][x]
+		
+		if not (current_cell & 0b10000):
+			if y > 0 and not visited[y - 1][x]:
+				visited[y - 1][x] = true
+				queue.append([x, y - 1, dst + 1])
+		if not (current_cell & 0b01000):
+			if x < width - 1 and not visited[y][x + 1]:
+				visited[y][x + 1] = true
+				queue.append([x + 1, y, dst + 1])
+		if not (current_cell & 0b00100):
+			if y < height - 1 and not visited[y + 1][x]:
+				visited[y + 1][x] = true
+				queue.append([x, y + 1, dst + 1])
+		if not (current_cell & 0b00010):
+			if x > 0 and not visited[y][x - 1]:
+				visited[y][x - 1] = true
+				queue.append([x - 1, y, dst + 1])
+	
+	return furthest_point
+
 func _ready():
 	var grid = []
 	
 	@warning_ignore("integer_division")
-	var width := 8 + Vars.id / 4;
+	var width := 3 + Vars.id / 4;
 	@warning_ignore("integer_division")
-	var height := 8 + Vars.id / 4;
+	var height := 3 + Vars.id / 4;
 	
 	# 0b<up><right><down><left><visited>
 	for y in range(height):
@@ -37,7 +84,7 @@ func _ready():
 		var nx = neighbor[0]
 		var ny = neighbor[1]
 		
-		if !(grid[ny][nx] & 0b00001):
+		if not (grid[ny][nx] & 0b00001):
 			# they call me john bitwise
 			if neighbor[2] == 0b00:
 				grid[cy][cx] &= 0b01111
@@ -57,6 +104,9 @@ func _ready():
 		
 		cx = nx
 		cy = ny
+	
+	var b = bfs_furthest(grid, 0, 0)
+	var c = bfs_furthest(grid, b.x, b.y)
 	
 	var tiles = []
 	var floor_tiles = []
@@ -98,22 +148,22 @@ func _ready():
 			@warning_ignore("integer_division")
 			var y_half_less = scaled_y + ((room_height - hall_width) / 2)
 			
-			if !grid[y][x] & 0b10000:
+			if not (grid[y][x] & 0b10000):
 				for hy in range(-hall_length, 0):
 					for hx in range(hall_width):
 						floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + hy))
 			
-			if !grid[y][x] & 0b01000:
+			if not (grid[y][x] & 0b01000):
 				for hy in range(hall_width):
 					for hx in range(hall_length):
 						floor_tiles.append(Vector2i(scaled_x + room_width + hx, y_half_less + hy))
 			
-			if !grid[y][x] & 0b00100:
+			if not (grid[y][x] & 0b00100):
 				for hy in range(hall_length):
 					for hx in range(hall_width):
 						floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + room_height + hy))
 			
-			if !grid[y][x] & 0b00010:
+			if not (grid[y][x] & 0b00010):
 				for hy in range(hall_width):
 					for hx in range(-hall_length, 0):
 						floor_tiles.append(Vector2i(scaled_x + hx, y_half_less + hy))
@@ -154,4 +204,8 @@ func _ready():
 	
 	set_cells_terrain_connect(floor_tiles, 0, 1)
 	
+	print(b)
+	
+	@warning_ignore("integer_division")
+	$"../Player".position = ((b * Vector2i(room_width, room_height)) + Vector2i(room_width / 2, room_height / 2)) * 128
 	print(map_str)
