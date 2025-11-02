@@ -132,41 +132,61 @@ func _ready():
 	
 	for y in range(height):
 		for x in range(width):
-			# 0b<up><right><down><left><visited>
-			
 			var scaled_x := x * (room_width + hall_length)
 			var scaled_y := y * (room_height + hall_length)
 			
-			# room
-			for ry in range(room_height):
-				for rx in range(room_width):
-					floor_tiles.append(Vector2i(scaled_x + rx, scaled_y + ry))
-			
-			# halls
 			@warning_ignore("integer_division")
 			var x_half_less = scaled_x + ((room_width - hall_width) / 2)
 			@warning_ignore("integer_division")
 			var y_half_less = scaled_y + ((room_height - hall_width) / 2)
 			
-			if not (grid[y][x] & 0b10000):
-				for hy in range(-hall_length, 0):
-					for hx in range(hall_width):
-						floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + hy))
-			
-			if not (grid[y][x] & 0b01000):
-				for hy in range(hall_width):
-					for hx in range(hall_length):
-						floor_tiles.append(Vector2i(scaled_x + room_width + hx, y_half_less + hy))
-			
-			if not (grid[y][x] & 0b00100):
-				for hy in range(hall_length):
-					for hx in range(hall_width):
-						floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + room_height + hy))
-			
-			if not (grid[y][x] & 0b00010):
-				for hy in range(hall_width):
-					for hx in range(-hall_length, 0):
-						floor_tiles.append(Vector2i(scaled_x + hx, y_half_less + hy))
+			if x == c.x and y == c.y:
+				var offset = Vector2i(0, 0)
+				
+				if not (grid[y][x] & 0b10000):
+					@warning_ignore("integer_division")
+					offset = Vector2i(room_width / 2 - 1, 1)
+				elif not (grid[y][x] & 0b01000):
+					@warning_ignore("integer_division")
+					offset = Vector2i(room_width - 3, room_height / 2 - 1)
+				elif not (grid[y][x] & 0b00100):
+					@warning_ignore("integer_division")
+					offset = Vector2i(room_width / 2 - 1, room_height - 3)
+				elif not (grid[y][x] & 0b00010):
+					@warning_ignore("integer_division")
+					offset = Vector2i(1, room_height / 2 - 1)
+				
+				for ey in range(4):
+					for ex in range(4):
+						set_cell(Vector2i(scaled_x + ex - 1, scaled_y + ey - 1) + offset, 0, Vector2i(12, 4))
+			else:
+				# 0b<up><right><down><left><visited>
+				
+				# room
+				for ry in range(room_height):
+					for rx in range(room_width):
+						floor_tiles.append(Vector2i(scaled_x + rx, scaled_y + ry))
+				
+				# halls
+				if not (grid[y][x] & 0b10000):
+					for hy in range(-hall_length, 0):
+						for hx in range(hall_width):
+							floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + hy))
+				
+				if not (grid[y][x] & 0b01000):
+					for hy in range(hall_width):
+						for hx in range(hall_length):
+							floor_tiles.append(Vector2i(scaled_x + room_width + hx, y_half_less + hy))
+				
+				if not (grid[y][x] & 0b00100):
+					for hy in range(hall_length):
+						for hx in range(hall_width):
+							floor_tiles.append(Vector2i(x_half_less + hx, scaled_y + room_height + hy))
+				
+				if not (grid[y][x] & 0b00010):
+					for hy in range(hall_width):
+						for hx in range(-hall_length, 0):
+							floor_tiles.append(Vector2i(scaled_x + hx, y_half_less + hy))
 			
 			if x == b.x and y == b.y:
 				map_str += "A"
@@ -211,8 +231,7 @@ func _ready():
 	
 	set_cells_terrain_connect(floor_tiles, 0, 1)
 	
-	print(b)
-	
 	@warning_ignore("integer_division", "narrowing_conversion")
 	$"../Player".position = ((b * Vector2i(room_width + hall_length, room_height + hall_length) + Vector2i(room_width * 0.5, room_height * 0.5))) * 128
+	
 	print(map_str)
