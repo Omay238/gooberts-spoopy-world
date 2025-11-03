@@ -53,9 +53,9 @@ func _ready():
 	var grid = []
 	
 	@warning_ignore("integer_division")
-	var width := 2 + Vars.id / 4;
+	var width := 4 + Vars.id / 4;
 	@warning_ignore("integer_division")
-	var height := 2 + Vars.id / 4;
+	var height := 4 + Vars.id / 4;
 	
 	# 0b<up><right><down><left><visited>
 	for y in range(height):
@@ -249,7 +249,7 @@ func _ready():
 				map_str += "╳"
 		map_str += "\n"
 	
-	set_cells_terrain_connect(floor_tiles, 0, 1)
+	set_cells_terrain_connect(floor_tiles, Vars.spooky_level, 1)
 	
 	@warning_ignore("integer_division", "narrowing_conversion")
 	$"../Player".position = ((b * Vector2i(room_width + hall_length, room_height + hall_length) + Vector2i(room_width * 0.5, room_height * 0.5))) * 128

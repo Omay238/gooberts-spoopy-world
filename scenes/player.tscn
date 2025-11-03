@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxdmnhk6uge32"]
+[gd_scene load_steps=8 format=3 uid="uid://bxdmnhk6uge32"]
 
 [ext_resource type="Texture2D" uid="uid://cg53lu76ky5tl" path="res://images/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bmuxr5b5rcgxh" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://bk5rl27hbbfei" path="res://scenes/dialog.tscn" id="3_qhqgy"]
+[ext_resource type="Shader" uid="uid://b4l5tq2km0pu" path="res://crt.gdshader" id="4_dqkch"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2els"]
 friction = 0.0
@@ -10,6 +11,30 @@ rough = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
 radius = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
+shader = ExtResource("4_dqkch")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.010000047974999982
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.50000002375
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [node name="Player" type="RigidBody2D"]
 collision_layer = 3
@@ -28,8 +53,7 @@ texture = ExtResource("1_3vyb7")
 shape = SubResource("CircleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.1, 0.1)
-position_smoothing_enabled = true
+zoom = Vector2(0.8, 0.8)
 position_smoothing_speed = 20.0
 
 [node name="Dialog" parent="Camera2D" instance=ExtResource("3_qhqgy")]
@@ -48,3 +72,13 @@ offset_top = -432.0
 offset_right = 769.0
 offset_bottom = 432.0
 color = Color(0, 0, 0, 1)
+
+[node name="CRT" type="ColorRect" parent="Camera2D"]
+visible = false
+z_index = 4096
+z_as_relative = false
+material = SubResource("ShaderMaterial_qlg0r")
+offset_left = -769.0
+offset_top = -432.0
+offset_right = 769.0
+offset_bottom = 432.0
