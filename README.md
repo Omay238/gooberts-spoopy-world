@@ -23,6 +23,8 @@ aseprite - pixel graphics editor, used for _spooky_ things
 ## shoutout to liminal on discord
 (very chill guy. d1 gooberts spoopy world fan.)
 
+https://github.com/user-attachments/assets/fe639ca0-d0cf-43d3-bda0-465489ef06e2
+
 ## lllooorrreee
 
 <details>
