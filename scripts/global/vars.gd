@@ -2,6 +2,6 @@ extends Node
 
 var floors = preload("res://scenes/special_floors/special_floors.tres").floors
 
-var id := 7
+var id := 0
 
-var spooky_level := 2
+var spooky_level := 0

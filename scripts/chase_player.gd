@@ -92,6 +92,10 @@ func exec_cutscene():
 
 func exec_cutscene_2():
 	$"../Face/Area2D".monitoring = false
+	
+	var scale_tween = get_tree().create_tween()
+	await scale_tween.tween_property($"../Face", "scale", Vector2(2, 2), 1.0).finished
+	
 	started = false
 	cutscene = true
 	
