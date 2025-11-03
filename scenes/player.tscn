@@ -12,6 +12,7 @@ rough = true
 radius = 32.0
 
 [node name="Player" type="RigidBody2D"]
+collision_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_g2els")
 gravity_scale = 0.0
 can_sleep = false
@@ -27,6 +28,7 @@ texture = ExtResource("1_3vyb7")
 shape = SubResource("CircleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.1, 0.1)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 

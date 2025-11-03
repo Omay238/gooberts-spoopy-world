@@ -1,5 +1,7 @@
 extends TileMapLayer
 
+var fin_script = preload("res://scripts/proceed.gd")
+
 func bfs_furthest(grid, sx, sy) -> Vector2i:
 	var height = grid.size()
 	var width = grid[0].size()
@@ -51,9 +53,9 @@ func _ready():
 	var grid = []
 	
 	@warning_ignore("integer_division")
-	var width := 3 + Vars.id / 4;
+	var width := 2 + Vars.id / 4;
 	@warning_ignore("integer_division")
-	var height := 3 + Vars.id / 4;
+	var height := 2 + Vars.id / 4;
 	
 	# 0b<up><right><down><left><visited>
 	for y in range(height):
@@ -159,6 +161,24 @@ func _ready():
 				for ey in range(4):
 					for ex in range(4):
 						set_cell(Vector2i(scaled_x + ex - 1, scaled_y + ey - 1) + offset, 0, Vector2i(12, 4))
+				
+				
+				var area = Area2D.new()
+				var collision_shape = CollisionShape2D.new()
+				var rectangle_shape = RectangleShape2D.new()
+				
+				rectangle_shape.size = Vector2i(512, 512)
+				
+				collision_shape.position = (offset + Vector2i(1 + scaled_x, 1 + scaled_y)) * 128
+				collision_shape.shape = rectangle_shape
+				
+				area.collision_layer = 0
+				area.collision_mask = 2
+				
+				area.add_child(collision_shape)
+				area.set_script(load("res://scripts/proceed.gd"))
+				
+				$"..".add_child.call_deferred(area)
 			else:
 				# 0b<up><right><down><left><visited>
 				
