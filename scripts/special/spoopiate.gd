@@ -1,4 +1,4 @@
 extends Control
 
-func _ready():
+func _init():
 	Vars.spooky_level += 1

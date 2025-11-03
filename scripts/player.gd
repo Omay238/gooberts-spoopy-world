@@ -15,6 +15,9 @@ func change_scene():
 		get_tree().change_scene_to_file("res://scenes/dyn.tscn")
 
 func _ready() -> void:
+	if Vars.spooky_level == 2:
+		$Camera2D/CRT.show()
+	
 	SignalMan.change_scene.connect(change_scene)
 	
 	var stretch_tween = get_tree().create_tween()
@@ -23,9 +26,6 @@ func _ready() -> void:
 	await stretch_tween.tween_property($Camera2D/ColorRect, "position", Vector2(769, -432), 1.0).finished
 	$Camera2D/ColorRect.size = Vector2(0, 864)
 	$Camera2D/ColorRect.position = Vector2(-769, -432)
-	
-	if Vars.spooky_level == 2:
-		$Camera2D/CRT.show()
 
 func _process(_delta: float) -> void:
 	var input = Input.get_vector("move_left", "move_right", "move_up", "move_down");

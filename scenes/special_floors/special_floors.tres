@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="Floors" load_steps=7 format=3 uid="uid://d013qvga2a32g"]
+[gd_resource type="Resource" script_class="Floors" load_steps=9 format=3 uid="uid://d013qvga2a32g"]
 
 [ext_resource type="Script" uid="uid://74sm82s36ioh" path="res://scripts/global/were_special.gd" id="1_aqadj"]
 [ext_resource type="Script" uid="uid://cuxxw78gif15g" path="res://scripts/global/im_special.gd" id="1_kmmn3"]
 [ext_resource type="PackedScene" uid="uid://bee03bmptt54a" path="res://scenes/special_floors/tutorial.tscn" id="2_sijpc"]
 [ext_resource type="PackedScene" uid="uid://bwflkml5cro01" path="res://scenes/special_floors/spoopiate.tscn" id="3_534y8"]
+[ext_resource type="PackedScene" uid="uid://cvvwkt0g664kp" path="res://scenes/special_floors/spookiate.tscn" id="4_8kcv8"]
 
 [sub_resource type="Resource" id="Resource_kmmn3"]
 script = ExtResource("1_kmmn3")
 scene = ExtResource("2_sijpc")
-floor_num = 1
+floor_num = 2
 metadata/_custom_type_script = "uid://cuxxw78gif15g"
 
 [sub_resource type="Resource" id="Resource_8kcv8"]
@@ -17,7 +18,13 @@ scene = ExtResource("3_534y8")
 floor_num = 3
 metadata/_custom_type_script = "uid://cuxxw78gif15g"
 
+[sub_resource type="Resource" id="Resource_2mj0j"]
+script = ExtResource("1_kmmn3")
+scene = ExtResource("4_8kcv8")
+floor_num = 1
+metadata/_custom_type_script = "uid://cuxxw78gif15g"
+
 [resource]
 script = ExtResource("1_aqadj")
-floors = Array[ExtResource("1_kmmn3")]([SubResource("Resource_kmmn3"), SubResource("Resource_8kcv8")])
+floors = Array[ExtResource("1_kmmn3")]([SubResource("Resource_kmmn3"), SubResource("Resource_8kcv8"), SubResource("Resource_2mj0j")])
 metadata/_custom_type_script = "uid://74sm82s36ioh"
