@@ -53,7 +53,7 @@ var tex_id = 0
 
 func update_textures():
 	mouth_open.texture = mouth_open_textures[tex_id]
-	mouth_closed.texture = mouth_open_textures[tex_id]
+	mouth_closed.texture = mouth_closed_textures[tex_id]
 	left_eye_open.texture = left_eye_open_textures[tex_id]
 	right_eye_open.texture = right_eye_open_textures[tex_id]
 	left_eye_closed.texture = left_eye_closed_textures[tex_id]
@@ -63,31 +63,36 @@ func update_textures():
 
 
 func _ready():
-	SignalMan.connect("open_mouth", open_mouth)
-	SignalMan.connect("close_mouth", close_mouth)
-	SignalMan.connect("open_left_eye", open_left_eye)
-	SignalMan.connect("open_right_eye", open_right_eye)
-	SignalMan.connect("close_left_eye", close_left_eye)
-	SignalMan.connect("close_right_eye", close_right_eye)
+	SignalMan.open_mouth.connect(open_mouth)
+	SignalMan.close_mouth.connect(close_mouth)
+	SignalMan.open_left_eye.connect(open_left_eye)
+	SignalMan.open_right_eye.connect(open_right_eye)
+	SignalMan.close_left_eye.connect(close_left_eye)
+	SignalMan.close_right_eye.connect(close_right_eye)
 	
-	$Timer.connect("timeout", update_textures)
+	$Timer.timeout.connect(update_textures)
 
 
 func open_mouth():
 	mouth_closed.hide()
 	mouth_open.show()
+
 func close_mouth():
 	mouth_open.hide()
 	mouth_closed.show()
+
 func open_left_eye():
 	left_eye_closed.hide()
 	left_eye_open.show()
+
 func open_right_eye():
 	right_eye_closed.hide()
 	right_eye_open.show()
+
 func close_left_eye():
 	left_eye_open.hide()
 	left_eye_closed.show()
+
 func close_right_eye():
 	right_eye_open.hide()
 	right_eye_closed.show()

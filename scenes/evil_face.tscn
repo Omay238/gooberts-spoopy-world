@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://mviyvw52flk3"]
 
-[ext_resource type="Script" uid="uid://lqutw6wqqqm8" path="res://scripts/face.gd" id="1_p5y8d"]
+[ext_resource type="Script" uid="uid://b5hgdqyxo72vb" path="res://scripts/evil_face.gd" id="1_p5y8d"]
 [ext_resource type="Texture2D" uid="uid://dp8tss6b1uone" path="res://images/face/evil/mouth_open1.png" id="2_p5y8d"]
 [ext_resource type="Texture2D" uid="uid://doow0fcngcf77" path="res://images/face/evil/mouth_closed1.png" id="3_p5y8d"]
 [ext_resource type="Texture2D" uid="uid://c5vvky3icptwb" path="res://images/face/evil/left_eye_open1.png" id="4_atpeu"]

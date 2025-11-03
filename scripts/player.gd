@@ -25,7 +25,7 @@ func _ready() -> void:
 	$Camera2D/ColorRect.position = Vector2(-769, -432)
 	
 	if Vars.spooky_level == 2:
-		$Camera2D/ColorRect.show()
+		$Camera2D/CRT.show()
 
 func _process(_delta: float) -> void:
 	var input = Input.get_vector("move_left", "move_right", "move_up", "move_down");

@@ -29,7 +29,6 @@ tile_set = ExtResource("1_yepdg")
 
 [node name="Player" parent="Root" instance=ExtResource("1_gmuux")]
 position = Vector2(-64, 64)
-collision_layer = 3
 
 [node name="Face" parent="Root" instance=ExtResource("4_c84r4")]
 offset_left = 1887.0
