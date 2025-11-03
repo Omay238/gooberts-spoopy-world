@@ -74,6 +74,15 @@ offset_right = 769.0
 offset_bottom = 432.0
 color = Color(0, 0, 0, 1)
 
+[node name="ColorRect2" type="ColorRect" parent="Camera2D"]
+z_index = 4096
+z_as_relative = false
+offset_left = -1441.0
+offset_top = -811.0
+offset_right = -1441.0
+offset_bottom = 811.0
+color = Color(0, 0, 0, 1)
+
 [node name="CRT" type="ColorRect" parent="Camera2D"]
 visible = false
 z_index = 4096

@@ -1,5 +1,59 @@
-[gd_scene format=3 uid="uid://bwnafh0t1bhrp"]
+[gd_scene load_steps=3 format=3 uid="uid://bwnafh0t1bhrp"]
+
+[ext_resource type="Script" uid="uid://dn2dgjg0vkkcn" path="res://scripts/special/end.gd" id="1_g7etw"]
+[ext_resource type="PackedScene" uid="uid://mviyvw52flk3" path="res://scenes/evil_face.tscn" id="2_0aeou"]
 
 [node name="End" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g7etw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 916.0
+offset_bottom = 10268.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "A game by
+[b]OwOmay[/b]
+
+Made for Hack Club Siege!
+
+Made with:
+Godot
+Inkscape
+Aseprite
+
+Thanks to:
+liminal (d1 spoopys world fan)
+Olive (for running Siege)
+Zach Latta (for making Hack Club)
+
+You (for playing)"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Face" parent="Label" instance=ExtResource("2_0aeou")]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 1307.0
+offset_right = 590.0
+offset_bottom = 1307.0
+scale = Vector2(3.8648853, 3.8648853)
