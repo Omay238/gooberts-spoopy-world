@@ -1,6 +1,6 @@
 extends Node
 
-var floors = preload("res://scenes/special_floors/special_floors.tres").floors
+var floors = load("res://scenes/special_floors/special_floors.tres").floors
 
 var id := 0
 
