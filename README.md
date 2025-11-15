@@ -15,6 +15,9 @@ them special
 this project was made in a week for the hack club siege week 5, with the theme
 "spooky" (eeks!). as of writing i've gotten like 30 hours sunken into the game.
 
+update: now it's made in two weeks OwO! very cool stuff. anyways, for siege week
+like 7 or smth with the theme space.
+
 ## tech stack lololol
 godot - game engine at the core of the game (woahhh)  
 inkscape - vector graphics editor, used for most things  
