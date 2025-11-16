@@ -22,3 +22,6 @@ func play():
 
 func quit():
 	get_tree().quit()
+	
+func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color.BLACK)
