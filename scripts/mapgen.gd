@@ -9,8 +9,8 @@ func _ready():
 	
 	local height, width = %s, %s
 	local generator = astray.Astray:new(
-		width / 2 - 1,
-		height / 2 - 1,
+		math.floor(width / 2) - 1,
+		math.floor(height / 2) - 1,
 		30,
 		70,
 		50,
