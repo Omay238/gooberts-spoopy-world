@@ -5,8 +5,6 @@ func _ready():
 	lua.open_libraries()
 	var map = lua.do_string("""local astray = require('astray/astray')
 	
-	local symbols = {Wall='#', Empty=' ', DoorN='-', DoorS='-', DoorE='|', DoorW='|'}
-	
 	local height, width = %s, %s
 	local generator = astray.Astray:new(
 		width / 2 - 1,
@@ -17,13 +15,14 @@ func _ready():
 		astray.RoomGenerator:new(
 			4,
 			2, 4,
-			2, 4
+			2, 4,
+			40
 		)
 	)
 	
 	local dungeon = generator:Generate()
 	
-	return generator:CellToTiles(dungeon, symbols)""" % [32 + Vars.id, 32 + Vars.id])
+	return generator:CellToTiles(dungeon)""" % [32 + Vars.id, 32 + Vars.id])
 	
 	var map_str = "";
 	

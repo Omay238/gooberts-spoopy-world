@@ -20,6 +20,7 @@ like 7 or smth with the theme space.
 
 ## tech stack lololol
 godot - game engine at the core of the game (woahhh)  
+astray - very cool maze generation. (i found from garbaj)  
 inkscape - vector graphics editor, used for most things  
 aseprite - pixel graphics editor, used for _spooky_ things
 
