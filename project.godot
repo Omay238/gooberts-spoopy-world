@@ -21,6 +21,7 @@ config/icon="uid://bxqoe483la76k"
 
 SignalMan="*res://scripts/global/signal.gd"
 Vars="*res://scripts/global/vars.gd"
+SpecialFloors="*res://scenes/special_floors/special_floors.gd"
 
 [display]
 

@@ -7,10 +7,10 @@ func change_scene():
 	await stretch_tween.tween_property($Camera2D/ColorRect, "size", Vector2(1538, 864), 1.0).finished
 	
 	
-	var el = Vars.floors.find_custom(func(x):return x.floor_num==Vars.id)
+	var el = SpecialFloors.floors[Vars.id]
 	
-	if el != -1:
-		get_tree().change_scene_to_packed(Vars.floors[el].scene)
+	if el != "":
+		get_tree().change_scene_to_packed(load("res://scenes/special_floors/%s.tscn" % el))
 	else:
 		get_tree().change_scene_to_file("res://scenes/dyn.tscn")
 
