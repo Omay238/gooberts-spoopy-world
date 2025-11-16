@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://jeo8dnjaafdn"]
+
+[ext_resource type="TileSet" uid="uid://dgnyyr30k4c0" path="res://tilemap.tres" id="1_86quu"]
+[ext_resource type="Script" uid="uid://dwmconournote" path="res://scripts/treasure.gd" id="1_it12x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86quu"]
+size = Vector2(384, 384)
+
+[node name="Treasure" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_it12x")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_86quu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_86quu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

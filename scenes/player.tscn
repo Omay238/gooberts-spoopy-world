@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxdmnhk6uge32"]
+[gd_scene load_steps=9 format=3 uid="uid://bxdmnhk6uge32"]
 
 [ext_resource type="Texture2D" uid="uid://cg53lu76ky5tl" path="res://images/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bmuxr5b5rcgxh" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://bk5rl27hbbfei" path="res://scenes/dialog.tscn" id="3_qhqgy"]
 [ext_resource type="Shader" uid="uid://b4l5tq2km0pu" path="res://crt.gdshader" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://c1mswm7u55bul" path="res://scripts/moneys.gd" id="4_qlg0r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2els"]
 friction = 0.0
@@ -72,6 +73,14 @@ offset_top = -432.0
 offset_right = 769.0
 offset_bottom = 432.0
 color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = 525.0
+offset_top = -370.0
+offset_right = 651.0
+offset_bottom = -330.0
+text = "moneys: 0"
+script = ExtResource("4_qlg0r")
 
 [node name="CRT" type="ColorRect" parent="Camera2D"]
 visible = false

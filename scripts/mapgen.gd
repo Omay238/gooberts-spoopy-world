@@ -1,5 +1,7 @@
 extends TileMapLayer
 
+var treasure_scene = preload("res://scenes/treasure.tscn")
+
 func _ready():
 	var lua = LuaState.new()
 	lua.open_libraries()
@@ -42,8 +44,12 @@ func _ready():
 			else: # door or floor
 				if ch == "A":
 					$"../Player".position = Vector2(x * 256 + 128, y * 256 + 128)
-				elif ch == "B":
+				if ch == "B":
 					elevator_pos = Vector2(x, y)
+				if ch == "$":
+					var treasure = treasure_scene.instantiate()
+					treasure.position = Vector2(x * 256, y * 256)
+					get_parent().add_child.call_deferred(treasure)
 				path_cells.append(Vector2i(x * 2, y * 2))
 				path_cells.append(Vector2i(x * 2 + 1, y * 2))
 				path_cells.append(Vector2i(x * 2, y * 2 + 1))
