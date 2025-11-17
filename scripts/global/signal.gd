@@ -23,3 +23,7 @@ signal close_dialog
 # scene stuff
 @warning_ignore("unused_signal") # more like unuwused signal ;3
 signal change_scene
+
+# minimap thing
+@warning_ignore("unused_signal")
+signal new_map(map: String)

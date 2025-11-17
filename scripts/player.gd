@@ -31,3 +31,8 @@ func _process(_delta: float) -> void:
 	var input = Input.get_vector("move_left", "move_right", "move_up", "move_down");
 	
 	apply_central_force(input * (35000 + Vars.speed * 5000));
+	
+	if Input.is_action_pressed("zoom_minimap"):
+		$Camera2D/MiniMap.scale = Vector2(12, 12)
+	else:
+		$Camera2D/MiniMap.scale = Vector2(4, 4)

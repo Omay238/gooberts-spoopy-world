@@ -56,7 +56,8 @@ func _ready():
 				path_cells.append(Vector2i(x * 2 + 1, y * 2 + 1))
 			map_str += ch
 		map_str += "\n"
-	print(map_str)
+	
+	SignalMan.new_map.emit(map_str)
 	
 	set_cells_terrain_connect(wall_cells, Vars.spooky_level, 0)
 	set_cells_terrain_connect(path_cells, Vars.spooky_level, 1)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://71novm4dgrrf"]
+
+[ext_resource type="Script" uid="uid://dckluqsj7i1wq" path="res://scripts/minimap.gd" id="1_5uo74"]
+[ext_resource type="Texture2D" uid="uid://bmn7pjheogeep" path="res://images/minimap.png" id="1_l143l"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5uo74"]
+texture = ExtResource("1_l143l")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_umpd3"]
+tile_size = Vector2i(1, 1)
+sources/0 = SubResource("TileSetAtlasSource_5uo74")
+
+[node name="MiniMap" type="Node2D"]
+script = ExtResource("1_5uo74")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_umpd3")
