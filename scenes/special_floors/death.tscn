@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dndvcmdq80dsv"]
+[gd_scene load_steps=6 format=3 uid="uid://dndvcmdq80dsv"]
 
 [ext_resource type="Script" uid="uid://buhhkfc6kg3jt" path="res://scripts/special/death.gd" id="1_dqe8w"]
 [ext_resource type="PackedScene" uid="uid://mviyvw52flk3" path="res://scenes/evil_face.tscn" id="2_0ms2d"]
+[ext_resource type="Texture2D" uid="uid://ditb4tel6l488" path="res://images/spacey.png" id="2_w1csq"]
 [ext_resource type="PackedScene" uid="uid://bk5rl27hbbfei" path="res://scenes/dialog.tscn" id="3_qinsr"]
+[ext_resource type="Texture2D" uid="uid://cg53lu76ky5tl" path="res://images/player.png" id="5_w0f44"]
 
 [node name="Death" type="Control"]
 layout_mode = 3
@@ -13,24 +15,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dqe8w")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Face" parent="." instance=ExtResource("2_0ms2d")]
-layout_mode = 0
-offset_left = 574.0
-offset_top = 226.0
-offset_right = 574.0
-offset_bottom = 226.0
-scale = Vector2(2.6485043, 2.6485043)
+texture = ExtResource("2_w1csq")
 
 [node name="Dialog" parent="." instance=ExtResource("3_qinsr")]
 layout_mode = 1
 offset_top = 244.0
 offset_bottom = 244.0
+
+[node name="PlayerRoot" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 333.0
+offset_top = 356.0
+offset_right = 373.0
+offset_bottom = 396.0
+
+[node name="Player" type="Sprite2D" parent="PlayerRoot"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_w0f44")
+
+[node name="FaceRoot" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 825.0
+offset_top = 154.0
+offset_right = 865.0
+offset_bottom = 194.0
+
+[node name="Face" parent="FaceRoot" instance=ExtResource("2_0ms2d")]
+layout_mode = 0
+scale = Vector2(1.3587879, 1.3587879)
